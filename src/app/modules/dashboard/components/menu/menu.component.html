@@ -1,0 +1,16 @@
+<div class="row">
+  <ng-container *ngFor="let menuOption of menuOptions">
+    <div *ngIf="menuOption.children && menuOption.children.length > 0">
+      <button mat-button [matMenuTriggerFor]="menu.childMenu">
+        {{ menuOption.displayName }}
+        <mat-icon>expand_more</mat-icon>
+      </button>
+      <mms-menu-item #menu [items]="menuOption.children"></mms-menu-item>
+    </div>
+    <div *ngIf="!menuOption.children || menuOption.children.length === 0">
+      <button mat-button>
+        {{ menuOption.displayName }}
+      </button>
+    </div>
+  </ng-container>
+</div>
